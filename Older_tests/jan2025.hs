@@ -8,6 +8,7 @@ funcA a b xs = (a,b) : xs
 funcB a b = (a+b, [a+1])
 -- adhoc polymorphic
 
+funcC :: (Char, Integer -> Bool)
 funcC = ('c', \n -> n > 0)
 
 funcD = (reverse)
@@ -97,3 +98,18 @@ odds = 1 : next 1 odds
         next n odds = (n+2) : next (n+2) odds
 
 tup = map (\x -> (x, 1 / x)) odds
+
+plop x = plop x
+quango u v = u ++ (if (length u) > 3 then "ringo" else v)
+
+-- Problem 6
+
+ft [] _ = []
+ft ((x, f):xs) v | x == v = if f == 1 then xs else (x, f - 1):xs 
+                 | otherwise = (x, f):(ft xs v)
+
+-- validfq :: Eq a, Eq b, Num b => [(a,b)] -> [a] -> Bool
+validfq fs vs = (reduce fs vs) == [] 
+  where 
+    reduce fs [] = fs 
+    reduce fs (x:vs) = ft (reduce fs vs) x 

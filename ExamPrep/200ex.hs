@@ -319,8 +319,8 @@ instance Functor W where
   fmap f ( Bingo x ) = Bingo ( f x )
 
 instance Applicative W where
-    pure x = Bingo x
-    (Bingo f) <*> (Bingo x) = (Bingo f x)
+    pure = Bingo
+    (Bingo f) <*> (Bingo a) = Bingo (f a)
 
 
 instance Monad W where

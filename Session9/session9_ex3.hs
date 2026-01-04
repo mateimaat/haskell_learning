@@ -12,3 +12,6 @@ letter1 = do xs <- getLine
 letter2 = do
     word <- getLine
     sequence_ [putStrLn [x] | x <- word]
+
+
+

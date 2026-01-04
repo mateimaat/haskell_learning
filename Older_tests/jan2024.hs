@@ -86,6 +86,7 @@ funcC f x = f x True
 
 
 
+funcD :: (Num a, Enum a) => a -> [a]
 funcD a = [1..a]
 -- adhoc polymorphic
 
